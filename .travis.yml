@@ -22,7 +22,7 @@ install:
   - npm run install-all
   - mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
 script:
-  - npm test:ci
+  - npm run test:ci
   - npm run build
 env:
   global:
