@@ -8,9 +8,9 @@
     "start": "ts-node -P server/tsconfig.json -r tsconfig-paths/register server/build/server.js",
     "server": "cd server && npm run dev",
     "client": "npm run genversion && cd client && npm start",
-    "dev": "cross-env SKIP_PREFLIGHT_CHECK=true npm-run-all --parallel server client",
+    "dev": "cross-env npm-run-all --parallel server client",
     "install-all": "npm install && cd server && npm install && cd .. && cd client && npm install",
-    "build": "npm run genversion && npm-run-all --sequential build:*",
+    "build": "cross-env npm run genversion && npm-run-all --sequential build:*",
     "build:server": "cd server && npm run build",
     "build:client": "cd client && npm run build",
     "genversion": "genversion -e version.js -s && mv version.js client/src/",
@@ -32,7 +32,6 @@
     "typescript": "^3.7.3"
   },
   "devDependencies": {
-    "@bahmutov/add-typescript-to-cypress": "^2.1.2",
     "@graphql-codegen/cli": "^1.13.0",
     "@graphql-codegen/typescript": "^1.13.0",
     "@graphql-codegen/typescript-operations": "^1.13.0",
