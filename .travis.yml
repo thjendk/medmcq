@@ -30,3 +30,4 @@ env:
     - DB_URL=mysql://root@127.0.0.1:3306/test
     - KEYGRIP_SECRETS="secret1 test2 aha3"
     - SENDGRID="NotUsed"
+    - SKIP_PREFLIGHT_CHECK=true
