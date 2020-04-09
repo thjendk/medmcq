@@ -31,3 +31,4 @@ env:
     - KEYGRIP_SECRETS="secret1 test2 aha3"
     - SENDGRID="NotUsed"
     - SKIP_PREFLIGHT_CHECK=true
+    - npm_config_loglevel=silent
