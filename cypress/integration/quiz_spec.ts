@@ -1,9 +1,9 @@
 describe('quiz, not logged in', () => {
-  it('should be able to load 20 questions', () => {
-    cy.contains('20').click();
+  it('should be able to load 5 questions', () => {
+    cy.contains('5').click();
     cy.contains('Start!').click();
     cy.url().should('include', '/quiz');
-    cy.get('.top-nav > .ui > .header').should('contain', 20);
+    cy.get('.top-nav > .ui > .header').should('contain', 5);
   });
 
   it('should be able to answer questions', () => {
