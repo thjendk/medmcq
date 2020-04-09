@@ -15,11 +15,13 @@
     "build:client": "cd client && npm run build",
     "genversion": "genversion -e version.js -s && mv version.js client/src/",
     "test": "start-server-and-test testdev http://localhost:3000 cy:run",
+    "test:ci": "start-server-and-test testdev http://localhost:3000 cy:record",
     "testdev": "cross-env NODE_ENV=\"test\" npm run dev",
     "postbuild": "cd server && npm run migrate-latest",
     "generate": "graphql-codegen",
     "cy": "cypress open",
     "cy:run": "cypress run",
+    "cy:record": "cypress run --record --key afdcbe79-00f6-4d00-b3ce-ebc9ce3affe5",
     "db:reset": "cd server && cross-env NODE_ENV=\"test\" knex migrate:latest && cross-env NODE_ENV=\"test\" knex seed:run"
   },
   "author": "Morsby & Thomas",
