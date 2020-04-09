@@ -3,7 +3,7 @@ describe('quiz, not logged in', () => {
     cy.contains('5').click();
     cy.contains('Start!').click();
     cy.url().should('include', '/quiz');
-    cy.get('.top-nav > .ui > .header').should('contain', 5);
+    cy.get('.top-nav > .ui > .header', { timeout: 10000 }).should('contain', 5);
   });
 
   it('should be able to answer questions', () => {
