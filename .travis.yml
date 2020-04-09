@@ -23,9 +23,9 @@ install:
   - mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
 script:
   - npm test
-  - git add -f ./cypress/videos
+  - git add ./cypress/videos
   - git commit -m "cypress vidoes"
-  - git push origin HEAD:travis
+  - git push
   - npm run build
 env:
   global:
