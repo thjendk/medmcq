@@ -32,3 +32,4 @@ env:
     - SENDGRID="NotUsed"
     - SKIP_PREFLIGHT_CHECK=true
     - npm_config_loglevel=silent
+    - CI=false
