@@ -72,8 +72,8 @@ describe('authentication', () => {
       cy.get('Input[placeholder=Email]').type('example@example.com');
       cy.get('Input[placeholder=Kodeord]').type('Password1');
       cy.get('Input[placeholder="Gentag kodeord"]').type('Password1');
-      cy.contains('button', 'Opret', { matchCase: false }).should('not.have.class', 'disabled');
-      cy.contains('button', 'Opret', { matchCase: false }).click();
+      cy.get('.field > .ui').should('not.have.class', 'disabled');
+      cy.get('.field > .ui').click();
       cy.url().should('not.include', 'opret');
       cy.getCookie('user').should('be.ok');
     });
@@ -104,8 +104,8 @@ describe('authentication', () => {
       cy.get('Input[placeholder=Email]').type('example2@example.com');
       cy.get('Input[placeholder=Kodeord]').type('Password2');
       cy.get('Input[placeholder="Gentag kodeord"]').type('Password2');
-      cy.contains('button', 'Opret', { matchCase: false }).should('not.have.class', 'disabled'); // Username and email is being checked
-      cy.contains('button', 'Opret', { matchCase: false }).click();
+      cy.get('.field > .ui').should('not.have.class', 'disabled'); // Username and email is being checked
+      cy.get('.field > .ui').click();
       cy.url().should('not.include', 'opret');
       cy.getCookie('user').should('be.ok');
       cy.logout();
