@@ -87,28 +87,4 @@ describe('authentication', () => {
       cy.logout();
     });
   });
-
-  describe('create second user', () => {
-    it('should be able to visit loginpage', () => {
-      cy.contains('Log ind').click();
-      cy.url().should('include', '/login');
-    });
-
-    it('should be able to visit register page', () => {
-      cy.contains('Opret bruger').click();
-      cy.url().should('include', '/opret');
-    });
-
-    it('should be able to register a second user', () => {
-      cy.get('Input[placeholder=Brugernavn]').type('example2');
-      cy.get('Input[placeholder=Email]').type('example2@example.com');
-      cy.get('Input[placeholder=Kodeord]').type('Password2');
-      cy.get('Input[placeholder="Gentag kodeord"]').type('Password2');
-      cy.contains('button', 'Opret', { matchCase: false }).should('not.have.class', 'disabled'); // Username and email is being checked
-      cy.contains('button', 'Opret', { matchCase: false }).click();
-      cy.url().should('not.include', 'opret');
-      cy.getCookie('user').should('be.ok');
-      cy.logout();
-    });
-  });
 });
