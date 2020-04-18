@@ -23,6 +23,15 @@ Cypress.Cookies.defaults({
   whitelist: 'user'
 });
 
+Cypress.on('window:before:load', (win) => {
+  cy.stub(win.console, 'log', (msg) => {
+    cy.task('log', `console.log --> ${msg}`);
+  });
+  cy.stub(win.console, 'error', (msg) => {
+    cy.task('log', `console.error --> ${msg}`);
+  });
+});
+
 describe('setup', () => {
   it('should reset the database', () => {
     cy.exec('npm run db:reset');
