@@ -11,6 +11,7 @@ describe('comments', () => {
 
   after(() => {
     cy.logout();
+    cy.frontpage();
   });
 
   describe('write comments', () => {

@@ -28,8 +28,7 @@ env:
   global:
     - NODE_ENV=test
     - DB_URL=mysql://root@127.0.0.1:3306/test
-    - KEYGRIP_SECRETS="secret1 test2 aha3"
+    - KEYGRIP_SECRETS="secret1 secret2 secret3"
     - SENDGRID="NotUsed"
-    - SKIP_PREFLIGHT_CHECK=true
     - npm_config_loglevel=silent
     - CI=false
