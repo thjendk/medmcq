@@ -32,3 +32,4 @@ env:
     - SENDGRID="NotUsed"
     - npm_config_loglevel=silent
     - CI=false
+    - CYPRESS_BASE_URL=http://localhost:3001
