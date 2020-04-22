@@ -27,10 +27,10 @@ app.use(cookieParser());
 apolloServer.applyMiddleware({ app });
 app.use('/images', imageRoute);
 
-/* Catch all */
-app.use(express.static(path.join(__dirname, '..', '..', 'client', 'build')));
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', '..', 'client', 'build', 'index.html'));
+// Serve index.js
+app.use(express.static(path.join(__dirname, '..')));
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
 // START SERVEREN

@@ -5,7 +5,7 @@
   "main": "server/server.js",
   "repository": "https://github.com/Morsby/medmcq",
   "scripts": {
-    "start": "ts-node -P server/tsconfig.json -r tsconfig-paths/register server/build/server.js",
+    "start": "ts-node -P server/tsconfig.json -r tsconfig-paths/register build/server/server.js",
     "server": "cd server && nodemon",
     "client": "react-scripts start",
     "dev": "cross-env npm-run-all --parallel server client",
