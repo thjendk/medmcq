@@ -1,5 +1,5 @@
 import dotEnv from 'dotenv-flow';
-dotEnv.config({ default_node_env: 'development' });
+dotEnv.config({ default_node_env: 'development', path: '../' });
 import './config/objection';
 import bodyParser from 'body-parser';
 import express from 'express';
