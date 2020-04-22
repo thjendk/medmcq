@@ -19,7 +19,7 @@ cache:
     # we also need to cache folder with Cypress binary
     - ~/.cache
 install:
-  - npm ci --only=production
+  - npm ci
   - mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
 script:
   - npm run build
