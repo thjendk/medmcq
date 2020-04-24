@@ -2,8 +2,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState = {
   language: 'dk', // Hvilket sprog er valgt? kan være 'dk' eller 'gb'
-  version: '2.1.0', // App version
+  version: '0.0.1', // App version
   firstTime: true, // Is it the users first time? Then display description modal.
+  notice: null,
 };
 
 const settingsReducer = createSlice({
@@ -19,6 +20,9 @@ const settingsReducer = createSlice({
     },
     setFirstTime: (state, action: PayloadAction<boolean>) => {
       state.firstTime = action.payload;
+    },
+    setNotice: (state, action: PayloadAction<string>) => {
+      state.notice = action.payload;
     },
   },
 });
