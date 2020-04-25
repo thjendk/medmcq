@@ -31,7 +31,6 @@ describe('authentication', () => {
 
     it('should be able to login', () => {
       cy.frontpage();
-      cy.wait(1000);
       cy.login();
       cy.logout();
     });
