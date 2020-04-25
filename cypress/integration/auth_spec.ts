@@ -29,10 +29,10 @@ describe('authentication', () => {
       cy.logout();
     });
 
-    it('should be able to login', () => {
-      cy.frontpage();
-      cy.login();
-      cy.logout();
-    });
+    // it('should be able to login', () => {
+    //   cy.frontpage();
+    //   cy.login();
+    //   cy.logout();
+    // });
   });
 });
