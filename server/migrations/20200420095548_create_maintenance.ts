@@ -6,7 +6,7 @@ export async function up(knex: Knex): Promise<any> {
     t.text('message');
   });
 
-  await knex('maintenance').insert({ text: null });
+  await knex('maintenance').insert({ message: null });
 }
 
 export async function down(knex: Knex): Promise<any> {

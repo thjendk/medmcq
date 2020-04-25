@@ -7,7 +7,7 @@ export async function up(knex: Knex): Promise<any> {
     t.string('color');
   });
 
-  await knex('notice').insert({ text: null });
+  await knex('notice').insert({ message: null });
 }
 
 export async function down(knex: Knex): Promise<any> {
