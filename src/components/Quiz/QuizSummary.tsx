@@ -25,7 +25,7 @@ const QuizSummary: React.SFC<QuizSummaryProps> = ({ clickHandler }) => {
   const userAnswers = useSelector((state: ReduxState) => state.quiz.userAnswers);
   const examMode = useSelector((state: ReduxState) => state.quiz.examMode);
   const usedExamTime = useSelector((state: ReduxState) => state.quiz.usedExamTime);
-  let results = calculateResults(questions, userAnswers);
+  const results = calculateResults(questions, userAnswers);
 
   return (
     <Container>
