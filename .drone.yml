@@ -12,6 +12,8 @@ steps:
 
   - name: build
     image: cypress/base
+    environment:
+      DB_URL: mysql://root@mysql/test
     commands:
       - unset CI
       - npm run build
