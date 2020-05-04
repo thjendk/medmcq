@@ -27,7 +27,6 @@ steps:
       CYPRESS_BASE_URL: http://localhost:3001
       SECRET: supersecret
     commands:
-      - cypress install
       - npm run test:ci
 
   - name: push
