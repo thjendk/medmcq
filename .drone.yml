@@ -5,6 +5,8 @@ name: multisourcefeedback
 steps:
   - name: install
     image: cypress/base
+    environment:
+      npm_config_loglevel: silent
     commands:
       - npm ci
 
