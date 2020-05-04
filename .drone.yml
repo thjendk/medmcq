@@ -6,6 +6,7 @@ steps:
   - name: install
     image: cypress/base
     environment:
+      CI: false
       npm_config_loglevel: silent
     commands:
       - npm ci
