@@ -6,7 +6,6 @@ steps:
   - name: install
     image: cypress/base
     environment:
-      CI: false
       npm_config_loglevel: silent
     commands:
       - npm ci
@@ -14,7 +13,7 @@ steps:
   - name: build
     image: cypress/base
     environment:
-      CI: false
+      CI: 'false'
     commands:
       - npm run build
 
@@ -24,7 +23,6 @@ steps:
       NODE_ENV: test
       DB_URL: mysql://root@mysql/test
       SENDGRID: nope
-      CI: false
       CYPRESS_BASE_URL: http://localhost:3001
       SECRET: supersecret
     commands:
