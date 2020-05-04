@@ -12,9 +12,8 @@ steps:
 
   - name: build
     image: cypress/base
-    environment:
-      CI: ''
     commands:
+      - unset CI
       - npm run build
 
   - name: test
