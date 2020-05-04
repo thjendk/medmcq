@@ -15,7 +15,7 @@ steps:
     environment:
       CI: false
     commands:
-      - npm run test:ci
+      - npm run build
 
   - name: test
     image: cypress/base
