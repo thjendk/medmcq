@@ -3,18 +3,13 @@ type: docker
 name: multisourcefeedback
 
 steps:
-  - name: install
+  - name: 'install and build'
     image: cypress/base
     environment:
       npm_config_loglevel: silent
-    commands:
-      - npm ci
-
-  - name: build
-    image: cypress/base
-    environment:
       CI: false
     commands:
+      - npm ci
       - npm run build
 
   - name: test
