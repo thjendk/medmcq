@@ -3,30 +3,19 @@ type: docker
 name: multisourcefeedback
 
 steps:
-  - name: install
+  - name: 'build and test'
     image: cypress/base
     environment:
       npm_config_loglevel: silent
-    commands:
-      - npm ci
-
-  - name: build
-    image: cypress/base
-    environment:
-      DB_URL: mysql://root@mysql/test
-    commands:
-      - unset CI
-      - npm run build
-
-  - name: test
-    image: cypress/base
-    environment:
       NODE_ENV: test
       DB_URL: mysql://root@mysql/test
       SENDGRID: nope
       CYPRESS_BASE_URL: http://localhost:3001
       SECRET: supersecret
     commands:
+      - unset CI
+      - npm ci
+      - npm run build
       - npm run test:ci
 
   - name: push
