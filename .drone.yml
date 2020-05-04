@@ -13,7 +13,7 @@ steps:
   - name: build
     image: cypress/base
     environment:
-      CI: false
+      CI: ''
     commands:
       - npm run build
 
