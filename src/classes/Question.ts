@@ -106,6 +106,7 @@ class Question {
 
     const question = await Apollo.mutate<Question>('createQuestion', mutation, { data });
     store.dispatch(questionsReducer.actions.addQuestion(question));
+    return question;
   };
 
   static update = async (data: Partial<QuestionInput>) => {

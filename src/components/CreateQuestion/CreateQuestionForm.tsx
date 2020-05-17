@@ -21,12 +21,14 @@ import questionsReducer from 'redux/reducers/question';
 import { imageURL } from 'utils/common';
 import QuestionImage from 'components/Question/QuestionImage';
 import _ from 'lodash';
+import { useHistory } from 'react-router-dom';
 
 export interface CreateQuestionFormProps {
   question?: Question;
 }
 
 const CreateQuestionForm: React.SFC<CreateQuestionFormProps> = ({ question }) => {
+  const history = useHistory();
   const [error, setError] = useState('');
   const [semesterId, setSemesterId] = useState(5);
   const [images, setImages] = useState(null);
@@ -38,6 +40,7 @@ const CreateQuestionForm: React.SFC<CreateQuestionFormProps> = ({ question }) =>
   const semester = semesters.find((semester) => semester.id === semesterId);
   const examSets = semester.examSets;
   const [imageKey, setImageKey] = useState(_.random(1, 1000)); // This is used to rerender the input, since it's uncontrollable
+  const [createdQuestionId, setCreatedQuestionId] = useState<number>(null);
   const formik = useFormik({
     initialValues: {
       id: question?.id || null,
@@ -79,6 +82,8 @@ const CreateQuestionForm: React.SFC<CreateQuestionFormProps> = ({ question }) =>
     setIsSubmitting(false);
   };
 
+  const handleDelete = async () => {};
+
   const updateQuestion = async (values: Partial<QuestionInput>) => {
     if (!hasChosenAnswer) return handleError('Du skal angive mindst 1 korrekt svar');
     setIsSubmitting(true);
@@ -110,10 +115,21 @@ const CreateQuestionForm: React.SFC<CreateQuestionFormProps> = ({ question }) =>
     }
   };
 
+  useEffect(() => {
+    setError('');
+    setCreatedQuestionId(null);
+  }, [
+    formik.values.text,
+    formik.values.answers[0].text,
+    formik.values.answers[1].text,
+    formik.values.answers[2].text
+  ]);
+
   const createQuestion = async (values: QuestionInput) => {
     try {
       if (!hasChosenAnswer) return handleError('Du skal angive mindst 1 korrekt svar');
       delete values.id;
+      let question: Question;
       if (!!images) {
         const formData = new FormData();
         for (let image of images) {
@@ -122,9 +138,9 @@ const CreateQuestionForm: React.SFC<CreateQuestionFormProps> = ({ question }) =>
         const res = await axios.post('/images/upload', formData, {
           headers: { 'content-type': 'multipart/form-data' }
         });
-        await Question.create({ ...values, images: res.data });
+        question = await Question.create({ ...values, images: res.data });
       } else {
-        await Question.create({ ...values });
+        question = await Question.create({ ...values });
       }
       await Semester.fetchAll();
       formik.resetForm();
@@ -132,6 +148,7 @@ const CreateQuestionForm: React.SFC<CreateQuestionFormProps> = ({ question }) =>
       setImageKey(_.random(1, 1000)); // This rerenders the file input, since this is the only way to clear it. It is uncontrollable otherwise.
       setIsSubmitting(false);
       setError('');
+      setCreatedQuestionId(question.id);
     } catch (error) {
       console.log('error: ', error);
       handleError(
@@ -256,7 +273,25 @@ const CreateQuestionForm: React.SFC<CreateQuestionFormProps> = ({ question }) =>
             {!!question ? 'Rediger' : 'Tilføj'}
           </Form.Button>
         </Form>
+        <div style={{ height: 5 }} />
+        {!!question && (
+          <Button color="red" fluid basic onClick={() => handleDelete}>
+            Slet
+          </Button>
+        )}
         {error && <Message color="red">{error}</Message>}
+        {createdQuestionId && (
+          <Message color="green">
+            Godt gået! Tak fordi at du har lavet et spørgsmål der vil hjælpe mange med deres
+            læsning.{' '}
+            <span
+              style={{ textDecoration: 'underline', cursor: 'pointer' }}
+              onClick={() => history.push(`/quiz/${createdQuestionId}`)}
+            >
+              Du kan finde dit spørgsmål ved at trykke her
+            </span>
+          </Message>
+        )}
       </Segment>
     </Container>
   );
