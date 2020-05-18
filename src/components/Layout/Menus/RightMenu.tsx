@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withLocalize, Translate, LocalizeContextProps } from 'react-localize-redux';
 import { useDispatch, useSelector } from 'react-redux';
-import { Menu, Icon, Button, Loader } from 'semantic-ui-react';
+import { Menu, Icon, Button, Loader, Popup, Card } from 'semantic-ui-react';
 import Flag from 'react-flagkit';
 import _ from 'lodash';
 import { ReduxState } from 'redux/reducers';
@@ -9,6 +9,9 @@ import settingsReducer from 'redux/reducers/settings';
 import User from 'classes/User';
 import Quiz from 'classes/Quiz';
 import Comment from 'classes/Comment';
+import Notifications from 'components/Notifications/Notifications';
+import Notification from 'classes/Notification.class';
+import useWidth from 'hooks/useWidth';
 
 export interface RightMenuProps extends LocalizeContextProps {
   handleNavigation: Function;
@@ -19,7 +22,9 @@ const RightMenu: React.SFC<RightMenuProps> = ({
   languages,
   handleNavigation
 }) => {
+  const { width } = useWidth();
   const [loading, setLoading] = useState(false);
+  const [notificationsOpen, setNotificationsOpen] = useState(false);
   const dispatch = useDispatch();
   const activeLanguage = useSelector((state: ReduxState) => state.settings.language);
   const user = useSelector((state: ReduxState) => state.auth.user);
@@ -49,6 +54,14 @@ const RightMenu: React.SFC<RightMenuProps> = ({
     }
   };
 
+  useEffect(() => {
+    setInterval(() => {
+      Notification.find();
+    }, 1000 * 60);
+
+    Notification.find();
+  }, []);
+
   if (user) {
     return (
       <>
@@ -62,6 +75,20 @@ const RightMenu: React.SFC<RightMenuProps> = ({
               }}
             />
           </strong>
+        </Menu.Item>
+        <Menu.Item
+          onClick={() => setNotificationsOpen(!notificationsOpen)}
+          style={{ cursor: 'pointer' }}
+        >
+          <Popup
+            flowing
+            basic
+            open={notificationsOpen}
+            position={width < 750 ? 'left center' : 'bottom center'}
+            trigger={<Icon style={{ margin: '0 auto' }} name="bell outline" />}
+          >
+            <Notifications />
+          </Popup>
         </Menu.Item>
         {!loading ? (
           <Menu.Item onClick={() => startQuizByLikes(user.likes.map((like) => like.commentId))}>

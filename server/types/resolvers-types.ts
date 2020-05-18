@@ -26,6 +26,7 @@ export type Query = {
   profile?: Maybe<User>;
   maintenance?: Maybe<Maintenance>;
   notice?: Maybe<Notice>;
+  notifications?: Maybe<Array<Maybe<Notification>>>;
 };
 
 
@@ -467,6 +468,16 @@ export type ContactInput = {
   message?: Maybe<Scalars['String']>;
 };
 
+export type Notification = {
+   __typename?: 'Notification';
+  id?: Maybe<Scalars['Int']>;
+  message?: Maybe<Scalars['String']>;
+  user?: Maybe<User>;
+  isRead?: Maybe<Scalars['Boolean']>;
+  createdAt?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['String']>;
+};
+
 export enum CacheControlScope {
   Public = 'PUBLIC',
   Private = 'PRIVATE'
@@ -583,6 +594,7 @@ export type ResolversTypes = ResolversObject<{
   Maintenance: ResolverTypeWrapper<Partial<Maintenance>>,
   Notice: ResolverTypeWrapper<Partial<Notice>>,
   ContactInput: ResolverTypeWrapper<Partial<ContactInput>>,
+  Notification: ResolverTypeWrapper<Partial<Notification>>,
   CacheControlScope: ResolverTypeWrapper<Partial<CacheControlScope>>,
   Upload: ResolverTypeWrapper<Partial<Scalars['Upload']>>,
 }>;
@@ -625,6 +637,7 @@ export type ResolversParentTypes = ResolversObject<{
   Maintenance: Partial<Maintenance>,
   Notice: Partial<Notice>,
   ContactInput: Partial<ContactInput>,
+  Notification: Partial<Notification>,
   CacheControlScope: Partial<CacheControlScope>,
   Upload: Partial<Scalars['Upload']>,
 }>;
@@ -641,6 +654,7 @@ export type QueryResolvers<ContextType = Context, ParentType extends ResolversPa
   profile?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType>,
   maintenance?: Resolver<Maybe<ResolversTypes['Maintenance']>, ParentType, ContextType>,
   notice?: Resolver<Maybe<ResolversTypes['Notice']>, ParentType, ContextType>,
+  notifications?: Resolver<Maybe<Array<Maybe<ResolversTypes['Notification']>>>, ParentType, ContextType>,
 }>;
 
 export type MutationResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
@@ -849,6 +863,16 @@ export type NoticeResolvers<ContextType = Context, ParentType extends ResolversP
   __isTypeOf?: isTypeOfResolverFn<ParentType>,
 }>;
 
+export type NotificationResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Notification'] = ResolversParentTypes['Notification']> = ResolversObject<{
+  id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>,
+  message?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  user?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType>,
+  isRead?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>,
+  createdAt?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  updatedAt?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  __isTypeOf?: isTypeOfResolverFn<ParentType>,
+}>;
+
 export interface UploadScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['Upload'], any> {
   name: 'Upload'
 }
@@ -875,6 +899,7 @@ export type Resolvers<ContextType = Context> = ResolversObject<{
   Like?: LikeResolvers<ContextType>,
   Maintenance?: MaintenanceResolvers<ContextType>,
   Notice?: NoticeResolvers<ContextType>,
+  Notification?: NotificationResolvers<ContextType>,
   Upload?: GraphQLScalarType,
 }>;
 
@@ -882,5 +907,5 @@ export type Resolvers<ContextType = Context> = ResolversObject<{
 /**
  * @deprecated
  * Use "Resolvers" root object instead. If you wish to get "IResolvers", add "typesPrefix: I" to your config.
-*/
+ */
 export type IResolvers<ContextType = Context> = Resolvers<ContextType>;

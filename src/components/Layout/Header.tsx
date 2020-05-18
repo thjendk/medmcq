@@ -8,8 +8,6 @@ import RightMenu from './Menus/RightMenu';
 import LeftMenu from './Menus/LeftMenu';
 import { useHistory } from 'react-router';
 
-// TODO: Evt. fjern connect - men skal så modtage `user` via parents
-
 /**
  * Header-component. Viser headeren og tjekker at brugeren er logget ind.
  */
