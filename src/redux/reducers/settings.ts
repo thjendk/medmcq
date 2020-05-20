@@ -5,7 +5,9 @@ const initialState = {
   version: null, // App version
   firstTime: true, // Is it the users first time? Then display description modal.
   notice: { message: '', color: '' },
-  maintenance: { message: '' }
+  maintenance: { message: '' },
+  leftSidebarOpen: false,
+  rightSidebarOpen: true
 };
 
 const settingsReducer = createSlice({
@@ -27,6 +29,14 @@ const settingsReducer = createSlice({
     },
     setMaintenance: (state, action: PayloadAction<{ message: string }>) => {
       state.maintenance = action.payload;
+    },
+    toggleSidebar: (state, action: PayloadAction<{ side: 'left' | 'right'; open: boolean }>) => {
+      if (action.payload.side === 'left') {
+        state.leftSidebarOpen = action.payload.open;
+      }
+      if (action.payload.side === 'right') {
+        state.rightSidebarOpen = action.payload.open;
+      }
     }
   }
 });

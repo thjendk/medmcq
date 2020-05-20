@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { withLocalize, Translate, LocalizeContextProps } from 'react-localize-redux';
 import { useDispatch, useSelector } from 'react-redux';
-import { Menu, Icon, Button, Loader, Popup, Card } from 'semantic-ui-react';
+import { Menu, Icon, Button, Loader, Image } from 'semantic-ui-react';
 import Flag from 'react-flagkit';
 import _ from 'lodash';
 import { ReduxState } from 'redux/reducers';
@@ -9,22 +9,20 @@ import settingsReducer from 'redux/reducers/settings';
 import User from 'classes/User';
 import Quiz from 'classes/Quiz';
 import Comment from 'classes/Comment';
-import Notifications from 'components/Notifications/Notifications';
 import Notification from 'classes/Notification.class';
+import { useHistory } from 'react-router-dom';
+import { breakpoints } from 'utils/common';
+import logo from '../logo/aulogo_hvid.png';
 import useWidth from 'hooks/useWidth';
 
 export interface RightMenuProps extends LocalizeContextProps {
-  handleNavigation: Function;
+  sidebar?: boolean;
 }
 
-const RightMenu: React.SFC<RightMenuProps> = ({
-  setActiveLanguage,
-  languages,
-  handleNavigation
-}) => {
+const RightMenu: React.SFC<RightMenuProps> = ({ setActiveLanguage, languages, sidebar }) => {
   const { width } = useWidth();
+  const history = useHistory();
   const [loading, setLoading] = useState(false);
-  const [notificationsOpen, setNotificationsOpen] = useState(false);
   const dispatch = useDispatch();
   const activeLanguage = useSelector((state: ReduxState) => state.settings.language);
   const user = useSelector((state: ReduxState) => state.auth.user);
@@ -33,7 +31,7 @@ const RightMenu: React.SFC<RightMenuProps> = ({
     setLoading(true);
     commentIds = _.uniq(commentIds);
     await Quiz.start({ commentIds });
-    handleNavigation('/quiz');
+    history.push('/quiz');
     setLoading(false);
   };
 
@@ -62,11 +60,17 @@ const RightMenu: React.SFC<RightMenuProps> = ({
     Notification.find();
   }, []);
 
+  if (width < breakpoints.mobile && !sidebar)
+    return (
+      <Menu.Item onClick={() => history.push('/')}>
+        <Image src={logo} style={{ height: '30px' }} />
+      </Menu.Item>
+    );
   if (user) {
     return (
       <>
         {languages.map((lang) => generateFlag(lang))}
-        <Menu.Item onClick={() => handleNavigation('/profil')}>
+        <Menu.Item onClick={() => history.push('/profil')}>
           <strong>
             <Translate
               id="header.greeting"
@@ -77,18 +81,12 @@ const RightMenu: React.SFC<RightMenuProps> = ({
           </strong>
         </Menu.Item>
         <Menu.Item
-          onClick={() => setNotificationsOpen(!notificationsOpen)}
+          onClick={() =>
+            dispatch(settingsReducer.actions.toggleSidebar({ side: 'right', open: true }))
+          }
           style={{ cursor: 'pointer' }}
         >
-          <Popup
-            flowing
-            basic
-            open={notificationsOpen}
-            position={width < 750 ? 'left center' : 'bottom center'}
-            trigger={<Icon style={{ margin: '0 auto' }} name="bell outline" />}
-          >
-            <Notifications />
-          </Popup>
+          <Icon style={{ margin: '0 auto' }} name="bell outline" />
         </Menu.Item>
         {!loading ? (
           <Menu.Item onClick={() => startQuizByLikes(user.likes.map((like) => like.commentId))}>
@@ -104,7 +102,7 @@ const RightMenu: React.SFC<RightMenuProps> = ({
             inverted
             onClick={() => {
               User.logout();
-              return handleNavigation('/');
+              return history.push('/');
             }}
           >
             <Translate id="header.logout" />
@@ -116,7 +114,7 @@ const RightMenu: React.SFC<RightMenuProps> = ({
     return (
       <>
         {languages.map((lang) => generateFlag(lang))}
-        <Menu.Item onClick={() => handleNavigation('/login')}>
+        <Menu.Item onClick={() => history.push('/login')}>
           <Icon name="doctor" /> <Translate id="header.login" />
         </Menu.Item>
       </>

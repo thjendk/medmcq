@@ -1,31 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { Sidebar as SemanticSidebar, Menu, Icon, Image } from 'semantic-ui-react';
-import styles from './Header.module.css';
-import logo from './logo/aulogo_hvid.png';
+import React from 'react';
+import { Sidebar as SemanticSidebar, Menu, Icon } from 'semantic-ui-react';
 import RightMenu from 'components/Layout/Menus/RightMenu';
 import { Translate } from 'react-localize-redux';
 import { useHistory } from 'react-router-dom';
+import Notifications from 'components/Notifications/Notifications';
+import { useSelector, useDispatch } from 'react-redux';
+import { ReduxState } from 'redux/reducers';
+import settingsReducer from 'redux/reducers/settings';
 
 export interface SideBarProps {}
 
 const Sidebar: React.SFC<SideBarProps> = ({ children }) => {
   const history = useHistory();
-  const [visible, setVisible] = useState(false);
-
-  const handleNavigation = (url) => {
-    setVisible(false);
-    history.push(url);
+  const { rightSidebarOpen, leftSidebarOpen } = useSelector((state: ReduxState) => state.settings);
+  const dispatch = useDispatch();
+  const toggleSidebar = (side: 'left' | 'right', open: boolean) => {
+    dispatch(settingsReducer.actions.toggleSidebar({ side, open }));
   };
 
-  useEffect(() => {
-    setVisible(false);
-  }, []);
-
   const handlePusher = () => {
-    if (visible) {
-      return setVisible(false);
-    } else {
-      return null;
+    if (rightSidebarOpen) {
+      toggleSidebar('right', false);
+    }
+    if (leftSidebarOpen) {
+      toggleSidebar('left', false);
     }
   };
 
@@ -33,41 +31,43 @@ const Sidebar: React.SFC<SideBarProps> = ({ children }) => {
     <SemanticSidebar.Pushable>
       <SemanticSidebar
         as={Menu}
-        animation="overlay"
+        animation="push"
         icon="labeled"
         inverted
         color="blue"
-        onHide={() => setVisible(false)}
+        onHide={() => toggleSidebar('left', false)}
         vertical
-        visible={visible}
+        visible={leftSidebarOpen}
         width="thin"
       >
-        <Menu.Item onClick={() => setVisible(false)}>
+        <Menu.Item onClick={() => toggleSidebar('left', false)}>
           <Icon name="close" inverted size="large" />
           <Translate id="header.close" />
         </Menu.Item>
-        <Menu.Item onClick={() => handleNavigation('/')}>
+        <Menu.Item onClick={() => history.push('/')}>
           <Icon name="home" />
           <Translate id="header.home" />
         </Menu.Item>
-        <RightMenu handleNavigation={handleNavigation} />
+        <RightMenu sidebar />
+      </SemanticSidebar>
+
+      <SemanticSidebar
+        animation="push"
+        vertical
+        as={Menu}
+        direction="right"
+        dimmed
+        visible={rightSidebarOpen}
+      >
+        <div style={{ overflowX: 'auto' }}>
+          <Notifications />
+        </div>
       </SemanticSidebar>
 
       <SemanticSidebar.Pusher
         onClick={handlePusher}
-        dimmed={visible}
         style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}
       >
-        <Menu className={styles.noprint} inverted color="blue" attached borderless>
-          <Menu.Item disabled={visible} onClick={() => setVisible(!visible)}>
-            <Icon name="bars" inverted size="large" />
-          </Menu.Item>
-          <Menu.Menu position="right">
-            <Menu.Item onClick={() => handleNavigation('/')}>
-              <Image src={logo} style={{ height: '30px' }} />
-            </Menu.Item>
-          </Menu.Menu>
-        </Menu>
         {children}
       </SemanticSidebar.Pusher>
     </SemanticSidebar.Pushable>

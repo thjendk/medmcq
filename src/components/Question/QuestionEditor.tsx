@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ReduxState } from 'redux/reducers';
 import { useSelector, useDispatch } from 'react-redux';
-import { Grid, Form, Divider, Dropdown, Button } from 'semantic-ui-react';
+import { Grid, Form, Divider, Button } from 'semantic-ui-react';
 import TextArea from 'antd/lib/input/TextArea';
 import { useFormik } from 'formik';
 import { QuestionInput } from 'types/generated';
@@ -29,20 +29,20 @@ const QuestionEditor: React.SFC<QuestionEditorProps> = () => {
       text: question.text,
       answer1: {
         text: question.answers.find((a) => a.index === 1).text,
-        isCorrect: question.answers.find((a) => a.index === 1).isCorrect,
+        isCorrect: question.answers.find((a) => a.index === 1).isCorrect
       },
       answer2: {
         text: question.answers.find((a) => a.index === 2).text,
-        isCorrect: question.answers.find((a) => a.index === 2).isCorrect,
+        isCorrect: question.answers.find((a) => a.index === 2).isCorrect
       },
       answer3: {
         text: question.answers.find((a) => a.index === 3).text,
-        isCorrect: question.answers.find((a) => a.index === 3).isCorrect,
+        isCorrect: question.answers.find((a) => a.index === 3).isCorrect
       },
-      examSetId: question.examSet.id,
+      examSetId: question.examSet.id
     },
     onSubmit: (values) => handleSubmit(values),
-    enableReinitialize: true,
+    enableReinitialize: true
   });
 
   const handleSubmit = async (values: Partial<QuestionInput>) => {
@@ -54,7 +54,7 @@ const QuestionEditor: React.SFC<QuestionEditorProps> = () => {
           formData.append('images', image);
         }
         const res = await Axios.post('/images/upload', formData, {
-          headers: { 'content-type': 'multipart/form-data' },
+          headers: { 'content-type': 'multipart/form-data' }
         });
         await Question.update({ ...values, images: res.data });
       } else {
