@@ -13,17 +13,14 @@ export interface HeaderProps {}
 
 const Header: React.SFC<HeaderProps> = () => {
   return (
-    <>
-      <h2 className={styles.onprint}>
-        <Translate id="header.credit" />
-      </h2>
+    <header>
       <Menu className={styles.noprint} inverted color="blue" attached borderless>
         <LeftMenu />
         <Menu.Menu position="right">
           <RightMenu />
         </Menu.Menu>
       </Menu>
-    </>
+    </header>
   );
 };
 

@@ -90,7 +90,16 @@ const RightMenu: React.SFC<RightMenuProps> = ({ setActiveLanguage, languages, si
           style={{ cursor: 'pointer' }}
         >
           <Icon style={{ margin: '0 auto' }} name="bell outline" />
-          <span style={{ marginLeft: '5px' }}>{notifications.length}</span>
+          <span
+            style={{
+              marginLeft: '5px',
+              borderRadius: '40px',
+              backgroundColor: 'darkred',
+              padding: '4px 6px'
+            }}
+          >
+            {notifications.length}
+          </span>
         </Menu.Item>
         {!loading ? (
           <Menu.Item onClick={() => startQuizByLikes(user.likes.map((like) => like.commentId))}>

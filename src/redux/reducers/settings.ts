@@ -7,7 +7,7 @@ const initialState = {
   notice: { message: '', color: '' },
   maintenance: { message: '' },
   leftSidebarOpen: false,
-  rightSidebarOpen: true
+  rightSidebarOpen: false
 };
 
 const settingsReducer = createSlice({
