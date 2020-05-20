@@ -26,6 +26,9 @@ const RightMenu: React.SFC<RightMenuProps> = ({ setActiveLanguage, languages, si
   const dispatch = useDispatch();
   const activeLanguage = useSelector((state: ReduxState) => state.settings.language);
   const user = useSelector((state: ReduxState) => state.auth.user);
+  const notifications = useSelector((state: ReduxState) =>
+    state.auth.notifications.filter((n) => !n.isRead)
+  );
 
   const startQuizByLikes = async (commentIds: Comment['id'][]) => {
     setLoading(true);
@@ -87,6 +90,7 @@ const RightMenu: React.SFC<RightMenuProps> = ({ setActiveLanguage, languages, si
           style={{ cursor: 'pointer' }}
         >
           <Icon style={{ margin: '0 auto' }} name="bell outline" />
+          <span style={{ marginLeft: '5px' }}>{notifications.length}</span>
         </Menu.Item>
         {!loading ? (
           <Menu.Item onClick={() => startQuizByLikes(user.likes.map((like) => like.commentId))}>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Menu, Image, Icon } from 'semantic-ui-react';
 import logo from '../logo/aulogo_dk_var2_hvid.png';
 import useWidth from 'hooks/useWidth';

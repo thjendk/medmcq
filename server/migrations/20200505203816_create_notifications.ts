@@ -6,7 +6,7 @@ export async function up(knex: Knex): Promise<any> {
     t.text('message');
     t.integer('user_id').unsigned().references('user.id').onDelete('cascade').onUpdate('cascade');
     t.integer('is_read', 1).defaultTo(0);
-    t.timestamps(true);
+    t.timestamps(true, true);
   });
 }
 
