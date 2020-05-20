@@ -40,7 +40,7 @@ const RightMenu: React.SFC<RightMenuProps> = ({ setActiveLanguage, languages, si
     dispatch(settingsReducer.actions.changeSettings({ type: 'language', value: lang }));
   };
 
-  const generateFlag = (lang) => {
+  const generateFlag = (lang: { code: string }) => {
     if (lang.code !== activeLanguage) {
       return (
         <Menu.Item onClick={() => changeLang(lang.code)} key={lang.code}>

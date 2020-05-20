@@ -19,14 +19,14 @@ export const breakpoints = {
   mobile: 768
 };
 
-export const imageURL = (image) => {
+export const imageURL = (image: string) => {
   if (image.match(/http|https/)) {
     return image;
   } else {
     return `/images/${image}`;
   }
 };
-export const truncateText = (text, length = 30) => {
+export const truncateText = (text: string, length = 30) => {
   if (!text) return;
   if (text.length + 3 > length) {
     return text.substring(0, length) + ' ...';
@@ -35,7 +35,7 @@ export const truncateText = (text, length = 30) => {
 
 export const allowedNs = {
   min: 1,
-  max: 100
+  max: 300
 };
 
 export const insertOrReplace = <T extends any>(array: T[], item: T, comparison: string = 'id') => {
