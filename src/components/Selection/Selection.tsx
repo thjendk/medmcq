@@ -13,6 +13,7 @@ import SelectionStartButton from './SelectionComponents/SelectionStartButton';
 import QuestionCount from './SelectionComponents/QuestionCount';
 import { useHistory } from 'react-router-dom';
 import SuspenseLoader from 'components/Misc/Utility/SuspenseLoader';
+import SelectionCountdown from './SelectionCountdown';
 const SelectionRandom = lazy(() => import('./SelectionRandom'));
 const SelectionMetadata = lazy(() => import('./SelectionMetadata'));
 const SelectionSets = lazy(() => import('./SelectionSets'));
@@ -45,6 +46,7 @@ const Selection: React.SFC<SelectionProps> = ({ addTranslation }) => {
           MedMCQ
         </Header>
         <Divider />
+        <SelectionCountdown />
         {notice?.message && <Message color={notice.color as any}>{notice.message}</Message>}
         <SelectionSemesterSelector />
         <QuestionCount />
