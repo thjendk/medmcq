@@ -1,10 +1,9 @@
 import React from 'react';
 import Countdown from 'react-countdown';
 import { Button, Divider, Grid, Icon, Image, Message } from 'semantic-ui-react';
-import moment from 'moment-timezone';
-import image from './tj_profile.jpg';
 import { useSelector } from 'react-redux';
 import { ReduxState } from 'redux/reducers';
+import image from './tj_profile.jpg';
 
 interface SelectionCountdownProps {}
 
@@ -14,7 +13,7 @@ const SelectionCountdown = (props: SelectionCountdownProps) => {
   return (
     <Message style={{ border: '2px solid red' }}>
       <div style={{ textAlign: 'center', fontSize: '2em', color: 'red', fontWeight: 'bolder' }}>
-        <Countdown date={moment('2020-11-13').toDate()} />
+        <Countdown date={new Date(2020, 10, 13)} />
       </div>
       <h2 style={{ textAlign: 'center' }}>
         {user
