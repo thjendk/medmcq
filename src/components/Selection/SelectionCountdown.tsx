@@ -13,7 +13,7 @@ const SelectionCountdown = (props: SelectionCountdownProps) => {
   return (
     <Message style={{ border: '2px solid red' }}>
       <div style={{ textAlign: 'center', fontSize: '2em', color: 'red', fontWeight: 'bolder' }}>
-        <Countdown date={new Date(2020, 10, 13)} />
+        <Countdown date={new Date(2020, 10, 12, 16)} />
       </div>
       <h2 style={{ textAlign: 'center' }}>
         {user
