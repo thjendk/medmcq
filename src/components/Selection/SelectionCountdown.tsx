@@ -34,8 +34,7 @@ const SelectionCountdown = (props: SelectionCountdownProps) => {
             <p>
               De sidste 3 år har jeg repræsenteret medicin i studienævnet, og har gennem denne
               indflydelse blandt andet sikret, at MedMCQ er frit tilgængeligt for alle studerende og
-              løbende får de nyeste eksamenssæt lagt ind.{' '}
-              Det er blot én af de ting, som jeg og medicinerrådet har sikret de seneste år i
+              løbende får de nyeste eksamenssæt lagt ind. Det er blot én af de ting, som jeg og medicinerrådet har sikret de seneste år i
               studienævnet, og du kan finde langt mere information på vores{' '}
               <a href="https://www.facebook.com/MedicinerraadAU" target="__blank">
                 facebook side
@@ -60,7 +59,7 @@ const SelectionCountdown = (props: SelectionCountdownProps) => {
               .
             </p>
             <p>
-              Stem på mig (Thomas Jensen) eller en anden repræsentant for medicinerrådet til
+              Stem på mig (Thomas Jensen, som nogle her på siden nok kender som Thjen) eller en anden repræsentant for medicinerrådet til
               universitetsvalget for at sikre din indflydelse på uddannelsen. Får medicinerrådet
               samlet 6 gange så mange stemmer som konservative studenter, holdes de ude af
               studienævnet.
