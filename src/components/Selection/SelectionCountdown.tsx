@@ -35,10 +35,7 @@ const SelectionCountdown = (props: SelectionCountdownProps) => {
               De sidste 3 år har jeg repræsenteret medicin i studienævnet, og har gennem denne
               indflydelse blandt andet sikret, at MedMCQ er frit tilgængeligt for alle studerende og
               løbende får de nyeste eksamenssæt lagt ind.{' '}
-              <span style={{ color: 'darkgreen' }}>
-                Så længe vi har indflydelse hos ledelsen, vil jeg kæmpe for at dette ikke ændrer sig
-              </span>
-              . Det er blot én af de ting, som jeg og medicinerrådet har sikret de seneste år i
+              Det er blot én af de ting, som jeg og medicinerrådet har sikret de seneste år i
               studienævnet, og du kan finde langt mere information på vores{' '}
               <a href="https://www.facebook.com/MedicinerraadAU" target="__blank">
                 facebook side
