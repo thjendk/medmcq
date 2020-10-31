@@ -108,7 +108,7 @@
     "cross-env": "^7.0.2",
     "cypress": "^4.11.0",
     "nodemon": "^2.0.4",
-    "prettier": "^2.0.5",
+    "prettier": "^2.1.2",
     "start-server-and-test": "^1.11.2",
     "ts-jest": "^26.1.4"
   },
