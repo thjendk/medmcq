@@ -47,8 +47,9 @@ const SelectionCountdown = (props: SelectionCountdownProps) => {
             </p>
             <h2 style={{ textAlign: 'center' }}>Der er normalt fredsvalg, men ikke i år.</h2>
             <p>
-              Konservative studenter er i år opposition til medicinerrådet. De er et bred politisk
-              parti, og har ikke kontakt til de studerende på medicin.{' '}
+              Vi fører næsten aldrig valgkamp, men konservative studenter er i år opposition til
+              medicinerrådet. De er et bred politisk parti, og har ikke kontakt til de studerende på
+              medicin.{' '}
               <span style={{ color: 'red' }}>
                 Konservative studenter går ind for mindre kvote 2 optagelser, lavere SU, omlægning
                 af alt SU til lån og færre studiepladser.{' '}
