@@ -34,8 +34,9 @@ const SelectionCountdown = (props: SelectionCountdownProps) => {
             <p>
               De sidste 3 år har jeg repræsenteret medicin i studienævnet, og har gennem denne
               indflydelse blandt andet sikret, at MedMCQ er frit tilgængeligt for alle studerende og
-              løbende får de nyeste eksamenssæt lagt ind. Det er blot én af de ting, som jeg og medicinerrådet har sikret de seneste år i
-              studienævnet, og du kan finde langt mere information på vores{' '}
+              løbende får de nyeste eksamenssæt lagt ind. Det er blot én af de ting, som jeg og
+              medicinerrådet har sikret de seneste år i studienævnet, og du kan finde langt mere
+              information på vores{' '}
               <a href="https://www.facebook.com/MedicinerraadAU" target="__blank">
                 facebook side
               </a>
@@ -60,17 +61,28 @@ const SelectionCountdown = (props: SelectionCountdownProps) => {
               .
             </p>
             <p>
-              Stem på mig (Thomas Jensen, som nogle her på siden nok kender som Thjen) eller en anden repræsentant for medicinerrådet til
-              universitetsvalget for at sikre din indflydelse på uddannelsen. Får medicinerrådet
-              samlet 6 gange så mange stemmer som konservative studenter, holdes de ude af
-              studienævnet.
+              Stem på mig (Thomas Jensen, som nogle her på siden nok kender som Thjen) eller en
+              anden repræsentant for medicinerrådet til universitetsvalget for at sikre din
+              indflydelse på uddannelsen. Får medicinerrådet samlet 6 gange så mange stemmer som
+              konservative studenter, holdes de ude af studienævnet.
             </p>
-            <h2 style={{ textAlign: 'center' }}> Din stemme er meget vigtig! </h2>
-            <Button fluid color="green">
-              Stem på Thomas Jensen eller medicinerrådet nu. Af hjertet tak fra os alle.
+            <h2 style={{ textAlign: 'center' }}>
+              Din stemme er meget vigtig! Det tager max 30 sekunder!
+            </h2>
+            <Button
+              onClick={() =>
+                window.open('https://e-vote.dk/e-valg-afstemning/faces/Afstemning', '_blank')
+              }
+              fluid
+              color="green"
+              style={{ cursor: 'pointer' }}
+            >
+              Stem på Thomas Jensen eller medicinerrådet nu.
+              <br />
+              Kom direkte til stemmesiden ved at trykke her. Af hjertet tak fra os alle.
             </Button>
             <p>
-              Ps. tak fordi I bliver ved med at bruge systemet. Det er en stor fornøjelse at hjælpe
+              Ps. tak fordi I bliver ved med at bruge MedMCQ. Det er en stor fornøjelse, at hjælpe
               så mange af jer med oplæsning til eksamen <Icon name="heart outline" />
             </p>
           </Grid.Row>
