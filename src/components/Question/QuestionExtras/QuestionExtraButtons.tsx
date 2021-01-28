@@ -35,9 +35,13 @@ const QuestionExtraButtons: React.SFC<QuestionExtraButtonsProps> = ({
   );
   const publicComments = comments.filter((comment) => !comment.isPrivate).length;
   const privateComments = comments.filter((comment) => comment.isPrivate).length;
+  const isMultiMode = useSelector((state: ReduxState) => state.quiz.multiMode);
 
   const handleHidePercentages = () => {
     dispatch(quizReducer.actions.togglePercentages());
+  };
+  const handleMultiMode = () => {
+    dispatch(quizReducer.actions.toggleMultiMode());
   };
 
   return (
@@ -69,6 +73,9 @@ const QuestionExtraButtons: React.SFC<QuestionExtraButtonsProps> = ({
         </Menu.Item>
       )}
       <Menu.Menu position="right">
+        <Menu.Item onClick={handleMultiMode}>
+          {isMultiMode ? 'Disable multimode' : 'Enable multimode'}
+        </Menu.Item>
         <Menu.Item onClick={handleHidePercentages}>
           {percentagesHided ? (
             <Translate id="question.show_percentages" />

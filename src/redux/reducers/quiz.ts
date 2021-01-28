@@ -8,9 +8,10 @@ const initialState = {
   didInvalidate: false,
   imgOpen: false,
   hidePercentages: false,
-  examMode: true,
+  examMode: false,
   examModeStart: null as Date | null,
-  usedExamTime: ''
+  usedExamTime: '',
+  multiMode: false
 };
 
 const quizReducer = createSlice({
@@ -55,6 +56,9 @@ const quizReducer = createSlice({
       state.examMode = false;
       state.hidePercentages = false;
       state.examModeStart = null;
+    },
+    toggleMultiMode: (state) => {
+      state.multiMode = !state.multiMode;
     }
   }
 });

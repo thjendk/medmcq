@@ -13,8 +13,9 @@ const QuestionAnswerExplanation = ({ answerNumber }: { answerNumber: number }) =
       question.answers.map((a) => a.id).includes(userAnswer.answerId)
     )
   );
+  const examMode = useSelector((state: ReduxState) => state.quiz.examMode);
 
-  if (!isAnswered || !answer.explanation) return null;
+  if (!isAnswered || !answer.explanation || examMode) return null;
   return (
     <Message
       color={answer.isCorrect ? 'green' : 'grey'}
