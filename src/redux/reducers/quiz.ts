@@ -11,7 +11,7 @@ const initialState = {
   examMode: false,
   examModeStart: null as Date | null,
   usedExamTime: '',
-  multiMode: false
+  singleMode: true
 };
 
 const quizReducer = createSlice({
@@ -30,15 +30,11 @@ const quizReducer = createSlice({
       state.imgOpen = action.payload;
     },
     answer: (state, action: PayloadAction<{ answer: UserAnswerInput; answerIds: number[] }>) => {
-      // Check if question is already answered. Then we are in examMode.
-      const index = state.userAnswers.findIndex((answer) =>
-        action.payload.answerIds.includes(answer.answerId)
-      );
-
-      if (index !== -1) {
-        if (state.examMode) {
-          state.userAnswers[index] = action.payload.answer;
-        }
+      if (state.examMode) {
+        const index = state.userAnswers.findIndex((answer) =>
+          action.payload.answerIds.includes(answer.answerId)
+        );
+        state.userAnswers[index] = action.payload.answer;
       } else {
         state.userAnswers.push(action.payload.answer);
       }
@@ -57,8 +53,8 @@ const quizReducer = createSlice({
       state.hidePercentages = false;
       state.examModeStart = null;
     },
-    toggleMultiMode: (state) => {
-      state.multiMode = !state.multiMode;
+    toggleSingleMode: (state) => {
+      state.singleMode = !state.singleMode;
     }
   }
 });
