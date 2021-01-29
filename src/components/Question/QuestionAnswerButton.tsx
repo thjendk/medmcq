@@ -62,6 +62,8 @@ const QuestionAnswerButton: React.SFC<QuestionAnswerButtonProps> = ({ answer }) 
   answerText = subSupScript(answerText);
 
   const evalAnswer = (): any => {
+    if (isAnswered && examMode) return 'blue';
+    if (examMode) return null;
     if (answer.isCorrect && isAnswered) return 'green';
     if (!answer.isCorrect && isAnswered) return 'red';
     if (!isAnswered && hasBeenCorrect) return 'grey';

@@ -30,10 +30,11 @@ const quizReducer = createSlice({
       state.imgOpen = action.payload;
     },
     answer: (state, action: PayloadAction<{ answer: UserAnswerInput; answerIds: number[] }>) => {
-      if (state.examMode) {
-        const index = state.userAnswers.findIndex((answer) =>
-          action.payload.answerIds.includes(answer.answerId)
-        );
+      const index = state.userAnswers.findIndex((answer) =>
+        action.payload.answerIds.includes(answer.answerId)
+      );
+
+      if (state.examMode && index !== -1) {
         state.userAnswers[index] = action.payload.answer;
       } else {
         state.userAnswers.push(action.payload.answer);
@@ -52,6 +53,7 @@ const quizReducer = createSlice({
       state.examMode = false;
       state.hidePercentages = false;
       state.examModeStart = null;
+      state.singleMode = true;
     },
     toggleSingleMode: (state) => {
       state.singleMode = !state.singleMode;
