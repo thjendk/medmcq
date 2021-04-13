@@ -35,7 +35,7 @@ const SelectionTypeSelector: React.SFC<SelectionTypeSelectorProps> = () => {
         active={type === 'metadata'}
         onClick={(e) => handleChange(e.currentTarget.value)}
       >
-        {!semester?.value ? 'Subjects' : <Translate id="selectionTypeSelector.types.sets" />}
+        {!semester?.value ? 'Subjects' : <Translate id="selectionTypeSelector.types.specialties" />}
       </Button>
       <Button
         value="set"

@@ -54,8 +54,7 @@ const Footer: React.SFC<FooterProps> = ({ addTranslation }) => {
             <Grid.Column largeScreen={4} computer={4} tablet={6} mobile={16}>
               <Menu secondary vertical inverted fluid>
                 <Menu.Item onClick={() => handleClick(urls.contact)}>
-                  <Icon name="send" style={iconStyle} />
-                  <Translate id="footer.contact_link" />
+                  <p>Contact: <a href="mailto:kalau@au.dk">kalau@au.dk</a></p>
                 </Menu.Item>
 
                 <Menu.Item onClick={() => handleClick(urls.about)}>

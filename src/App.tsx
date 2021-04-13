@@ -133,7 +133,7 @@ const App: React.SFC<AppProps> = ({ addTranslation, initialize }) => {
             <Switch>
               <Route path={urls.login} component={Login} />
               <Route path={urls.logout} component={Logout} />
-              <Route path={urls.contact} component={Contact} />
+              
               <Route path={urls.about} component={About} />
               {maintenance?.message && user?.role.id !== 1 && (
                 <Route path="/" component={MaintenancePage} />
