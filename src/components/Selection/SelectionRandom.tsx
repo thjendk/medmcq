@@ -8,17 +8,11 @@ import { ReduxState } from 'redux/reducers';
 export interface SelectionRandomProps {}
 
 const SelectionRandom: React.FC<SelectionRandomProps> = () => {
-  const user = useSelector((state: ReduxState) => state.auth.user);
-
   return (
     <div>
       <SelectionNSelector />
-      {user?.role.id <= 3 && (
-        <>
-          <Divider />
-          <SelectionSearch />
-        </>
-      )}
+      <Divider />
+      <SelectionSearch />
     </div>
   );
 };
