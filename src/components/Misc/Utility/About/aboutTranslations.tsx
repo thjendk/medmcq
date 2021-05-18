@@ -17,7 +17,7 @@ export default {
                 Siden benytter open source tracking i form af Matomo. Denne
                 er indstillet til at respektere browser-opt-out, ikke at
                 sætte cookies og at anonymisere IP-adresser. Det vil sige,
-                at du er fuldstændig anonym. Data gemmes i min egen database
+                at du er fuldstændig anonym. Data gemmes på Aarhus Universitet
                 og deles ikke. Data bruges til at skabe et (dermed
                 underestimeret) overslag over brugen af siden.
             </p>
@@ -27,7 +27,7 @@ export default {
                 husker, at du er logget ind til næste gang.
             </p>`,
         `<p>
-                The site uses open source tracking (Matomo). This is configured to respect browser-opt-out, not to set any cookies and to anonymize IP-addresses. This means that you are completely anonymous. Data is saved in my own database and is not shared. Data is used to create a (under)estimate of the site's usage.
+                The site uses open source tracking (Matomo). This is configured to respect browser-opt-out, not to set any cookies and to anonymize IP-addresses. This means that you are completely anonymous. Data is saved at Aarhus University and is not shared. Data is used to create a (under)estimate of the site's usage.
             </p>
             <p>
                 The site uses no cookies unless you register for an account and log in. In this case, a cookie is set to remember you for your next visit.
@@ -53,7 +53,7 @@ export default {
               Siden benytter open source tracking i form af Matomo. Denne
               er indstillet til at respektere browser-opt-out, ikke at
               sætte cookies og at anonymisere IP-adresser. Det vil sige,
-              at du er fuldstændig anonym. Data gemmes i min egen database
+              at du er fuldstændig anonym. Data gemmes på Aarhus Universitet
               og deles ikke. Data bruges til at skabe et (dermed
               underestimeret) overslag over brugen af siden.
           </p>
@@ -63,7 +63,7 @@ export default {
               husker, at du er logget ind til næste gang.
           </p>`,
       `<p>
-              The site uses open source tracking (Matomo). This is configured to respect browser-opt-out, not to set any cookies and to anonymize IP-addresses. This means that you are completely anonymous. Data is saved in my own database and is not shared. Data is used to create a (under)estimate of the site's usage.
+              The site uses open source tracking (Matomo). This is configured to respect browser-opt-out, not to set any cookies and to anonymize IP-addresses. This means that you are completely anonymous. Data is saved at Aarhus University and is not shared. Data is used to create a (under)estimate of the site's usage.
           </p>
           <p>
               The site uses no cookies unless you register for an account and log in. In this case, a cookie is set to remember you for your next visit.
