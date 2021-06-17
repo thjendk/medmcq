@@ -37,7 +37,6 @@ import SemesterRerouter from 'components/Selection/SemesterRerouter';
 const Selection = lazy(() => import('./components/Selection/Selection'));
 const Quiz = lazy(() => import('./components/Quiz/Quiz'));
 const About = lazy(() => import('./components/Misc/Utility/About/About'));
-const Contact = lazy(() => import('./components/Misc/Utility/Contact'));
 const Signup = lazy(() => import('./components/Auth/Signup'));
 const Login = lazy(() => import('./components/Auth/Login'));
 const Logout = lazy(() => import('./components/Auth/Logout'));
@@ -133,7 +132,7 @@ const App: React.SFC<AppProps> = ({ addTranslation, initialize }) => {
             <Switch>
               <Route path={urls.login} component={Login} />
               <Route path={urls.logout} component={Logout} />
-              
+
               <Route path={urls.about} component={About} />
               {maintenance?.message && user?.role.id !== 1 && (
                 <Route path="/" component={MaintenancePage} />

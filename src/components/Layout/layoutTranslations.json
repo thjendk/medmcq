@@ -16,9 +16,12 @@
       "The site is developed with permission from The Department of Clinical Medicine and supported by <a style=\"color:white;text-decoration: underline;\" target=\"_blank\" href=\"https://cesu.au.dk\">CESU</a>, Health, Aarhus University"
     ],
     "developed_by": [
-      "Udvikles af <a style=\"color:white;text-decoration: underline;\" href=\"https://pure.au.dk/portal/da/persons/thomas-jensen(f3739755-fb40-406e-b577-af166c82442a).html\" target=\"_blank\">Thomas Jensen</a>",
-      "Developed by <a style=\"color:white;text-decoration: underline;\" href=\"https://pure.au.dk/portal/da/persons/thomas-jensen(f3739755-fb40-406e-b577-af166c82442a).html\" target=\"_blank\">Thomas Jensen</a>"
+      "Udviklet af <a style=\"color:white;text-decoration: underline;\" href=\"https://pure.au.dk/portal/da/persons/thomas-jensen(f3739755-fb40-406e-b577-af166c82442a).html\" target=\"_blank\">Thomas Jensen</a> og Sigurd Mosby Larsen",
+      "Developed by <a style=\"color:white;text-decoration: underline;\" href=\"https://pure.au.dk/portal/da/persons/thomas-jensen(f3739755-fb40-406e-b577-af166c82442a).html\" target=\"_blank\">Thomas Jensen</a> and Sigurd Morsby Larsen"
     ],
-    "created_by": ["Søsat af Sigurd Morsby Larsen", "Founded by Sigurd Morsby Larsen"]
+    "contact": [
+      "Problemer med siden? Kontakt kalau@au.dk",
+      "If you are experiences issues with the site, contact kalau@au.dk"
+    ]
   }
 }

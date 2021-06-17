@@ -45,18 +45,14 @@ const Footer: React.SFC<FooterProps> = ({ addTranslation }) => {
                 <Translate id="footer.permission" />
               </p>
               <div>
-                <Icon name="anchor" /> <Translate id="footer.developed_by" />
+                <Icon name="heartbeat" /> <Translate id="footer.developed_by" />
               </div>
               <div>
-                <Icon name="ship" /> <Translate id="footer.created_by" />
+                <Icon name="fire extinguisher" /> <Translate id="footer.contact" />
               </div>
             </Grid.Column>
             <Grid.Column largeScreen={4} computer={4} tablet={6} mobile={16}>
               <Menu secondary vertical inverted fluid>
-                <Menu.Item onClick={() => handleClick(urls.contact)}>
-                  <p>Contact: <a href="mailto:kalau@au.dk">kalau@au.dk</a></p>
-                </Menu.Item>
-
                 <Menu.Item onClick={() => handleClick(urls.about)}>
                   <Icon name="question circle outline" style={iconStyle} />
                   <Translate id="footer.about_link" />

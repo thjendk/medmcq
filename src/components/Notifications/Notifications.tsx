@@ -12,7 +12,7 @@ const Notifications: React.SFC<NotificationsProps> = () => {
   const notifications = useSelector((state: ReduxState) => state.auth.notifications);
   const semesterId = useSelector((state: ReduxState) => state.selection.semesterId);
   const semester = useSelector((state: ReduxState) =>
-    state.metadata.semesters.find((s) => s.id === semesterId)
+    state.metadata.semesters?.find((s) => s.id === semesterId)
   );
   const notReadCount = notifications.reduce((sum, n) => (n.isRead ? sum : sum + 1), 0);
 
